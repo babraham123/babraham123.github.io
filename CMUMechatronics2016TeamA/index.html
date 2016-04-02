@@ -93,8 +93,8 @@
             <div class="col-lg-12">
               <h2>Project Description</h2> 
               <div align="right"><a class="btn btn-default page-scroll corner" href="#design">Next</a></div>
-              <p>CMU Dynamics is currently prototyping a robot to clean the windows of skyscrapers and other tall buildings. We have designed the robot to automatically and completely clean one side of a dirty window without scratching or damaging the surface. Our device will have the ability to overcome a divide in the window as it would likely have to do in real window cleaning situations. It will also be portable and transferable between buildings, without any additional infrastructure required. 
-              Stay tuned for updates on the development of our first robot, the ideal tall building window cleaning machine. We call it Icarus. </p>
+              <p>CMU Dynamics is currently prototyping a robot to clean the windows of skyscrapers and other tall buildings. We have designed the robot to automatically and completely clean one side of a dirty window without scratching or damaging the surface. Our device will have the ability to overcome a divide in the window as it would likely have to do in real window cleaning situations. It will also be portable and transferable between buildings, without any additional infrastructure required. </p>
+              <p>Stay tuned for updates on the development of our first robot, the ideal tall building window cleaning machine. We call it Icarus. </p>
 
             </div>
           </div>
@@ -110,12 +110,12 @@
               <div align="right"><a class="btn btn-default page-scroll corner" href="#implementation">Next</a></div>
               
               <a class="thumbnail" href="#">
-                <img class="img-responsive" src="https://i.imgur.com/PioXYR4.jpg">
+                <img class="img-responsive" src="http://i.imgur.com/y15m6cC.png">
               </a>
 
               <p> Above is a CAD model of our robot, Icarus. It will attach itself to the window using a vacuum-suction cup mechanism. The robot will traverse the window using two perpendicularly oriented arms. These arms will be attached to a wire spool and motor mechanism placed at the center of the robot on a platform giving x and y movement. There is a spring placed between the vacuum cups and railing attachment. The cylinders attached to the vacuum cups allow for the springs to be compressed causing the cups to moved up and down. This is done using the same wire spool and motor mechanism that causes x,y movment. The z-direction movement allows the robot to overcome window partitions. Cleaning will be performed by spongest and squeegees attached to the robot arms allowing the robot to continuously clean as it moves.</p>
 
-              <p> Functionality of the robot includes:</p>
+              <b>Requirements:</b>
               <ul>
                 <li type="square">Must clean 2 sections of 1 side of window separated by a divide</li>
                 <li type="square"> Cannot touch the ground</li>
@@ -126,17 +126,24 @@
                 <li type="square">Allowed to initially place the robot on the window, but must be removable</li>
                 <li type="square"> No scratches or damage to the glass</li>
                 <li type= "square"> Cannot reach around the edges of the frame</li>
+                <li type= "square">Cleaning at a speed of 10 ft2/min</li>
               </ul>
 
-              <b> Challenges:</b>
+              <b>Challenges:</b>
               <ul>
-                <li type= "square"> Applying enough force to the glass to remove dirt</li>
-                <li type="square">Providing sufficient force to keep robot on window</li>
+                <li type="square">Applying enough force to the glass to remove dirt</li>
+                <li type="square">Speed</li>
                 <li type="square">Clearing divide</li>
                 <li type="square">Consistent performance</li>
-                <li type="square"> Carrying all cleaning equipment</li>
-                <li type="square"> Drying in prescribed time frame (30 seconds)</li>
-                <li type= "square">Cleaning at a speed of 10 ft2/min</li>
+                <li type="square">Carrying all cleaning equipment</li>
+                <li type="square">Drying in prescribed time frame (30 seconds)</li>
+              </ul>
+
+              <b>Coolness Factors:</b>
+              <ul>
+                <li type="square">Detecting the cleanliness of the glass using a light sensor</li>
+                <li type="square">A GUI to provide real time status updates</li>
+                <li type="square">A robust design that always provides at least 4 points of contact</li>
               </ul>
 
               <h3> Subsystems</h3>
@@ -181,12 +188,15 @@
             <div class="col-lg-12">
               <h2>System Implementation</h2>
               <div align="right"><a class="btn btn-default page-scroll corner" href="#performance">Next</a></div>
-              //  picture of vacuum system Cad
+
+              <a class="thumbnail" href="#">
+                <img class="img-responsive" src="http://i.imgur.com/iai652u.png">
+              </a>
               <br/>
 
               <h4> Attachment and Z-direction System Progress  </h4>
               <a class="thumbnail" href="#">
-                <img class="img-responsive" src="http://i.imgur.com/HGYdjl8.jpg">
+                <img class="img-responsive" src="http://i.imgur.com/wohnnJb.png">
               </a>
               <br/>
 
@@ -194,10 +204,18 @@
               <p> We thought to use a solenoid actuator for the z-direction. From our first design review we were informed that this would most likely be a poor choice of movement due to efficiency of the work one can do with the power put in. We had already ordered the part thus felt it necessary to test before ruling this out as a possibility. We found that not only was the solenoid complicated to wire and drive but that it was able to resist very little force when pulled on and had 1.3cm of movment, far less than we were hoping for. Thus it was ruled out as an option for z-direction movement.</p>
             
               <b> Z-Direction Prototype</b>
-              <p> Below is a picture of the first prototype of this subsystem. While we were unable to realize our planned prototype due to ordering problems out of our control we were able to gain insights into problems in our design. Firstly the major fail point for this robot could be the wire. While we were already intending to have a pulley system to avoid the wire having to bend beyond its bend radius this is definitely a critical componenet that could prove unreliable. Secondly we realised how important placement of the motor is for how well this system performs. Tension is also necessary for wire alignment on spool. This lead us to the realization that having this motor and wire spool sitting on the central plate would create problems with the z-motion as the plate and z-direction motor would be moving making co-ordinating a continuous lift particulalry difficult.
-              
+              <p> Below is a picture of the first prototype of this subsystem. While we were unable to realize our planned prototype due to ordering problems out of our control we were able to gain insights into problems in our design. Firstly the major fail point for this robot could be the wire. While we were already intending to have a pulley system to avoid the wire having to bend beyond its bend radius this is definitely a critical componenet that could prove unreliable. Secondly we realised how important placement of the motor is for how well this system performs. Tension is also necessary for wire alignment on spool. This lead us to the realization that having this motor and wire spool sitting on the central plate would create problems with the z-motion as the plate and z-direction motor would be moving making co-ordinating a continuous lift particulalry difficult.</p>
+
               <a class="thumbnail" href="#">
                 <img class="img-responsive" src="http://i.imgur.com/QeLzSFP.png">
+              </a>
+              <br/>
+
+              <b> Lead Screw Mechanism</b>
+              <p> After ditching the wire and spool design, we initially tried to implement a rack and pinion mechanism. However, misalignment with our support rods caused unacceptable amounts of slippage between the pinion and the rack. Also, the servo motor we used could not provide enough force to press the sponge against the window for cleaning. After extensive testing we finally moved over to a lead screw and nut mechanism. Lead screws are precise and efficient, often used in applications like 3D printing. Our implementation generates enough force to push the sponge against the glass for cleaning and is less complicated while being more powerful than any of the other mechanisms we prototyped.</p>
+              
+              <a class="thumbnail" href="#">
+                <img class="img-responsive" src="http://i.imgur.com/B9Lyys3.jpg">
               </a>
               <br/>
             
@@ -256,7 +274,7 @@
               <p><h3><a href="schedule.html">Schedule</a></h3></p>
               <br/>
 
-              <p><h3><a href="presenters.html">Presents List</a></h3></p>
+              <p><h3><a href="presenters.html">Presenters List</a></h3></p>
               <br/>
 
             </div>
