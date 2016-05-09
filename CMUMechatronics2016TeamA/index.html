@@ -93,8 +93,7 @@
             <div class="col-lg-12">
               <h2>Project Description</h2> 
               <div align="right"><a class="btn btn-default page-scroll corner" href="#design">Next</a></div>
-              <p>CMU Dynamics is currently prototyping a robot to clean the windows of skyscrapers and other tall buildings. We have designed the robot to automatically and completely clean one side of a dirty window without scratching or damaging the surface. Our device will have the ability to overcome a divide in the window as it would likely have to do in real window cleaning situations. It will also be portable and transferable between buildings, without any additional infrastructure required. </p>
-              <p>Stay tuned for updates on the development of our first robot, the ideal tall building window cleaning machine. We call it Icarus. </p>
+              <p>Historically, being a window cleaner was regarded as one of the most dangerous occupations in the world. We, as graduate students of Carnegie Mellon University, have taken this challenge to design and fabricate an autonomous robot to replace this work function on a broad scale. The machine will be completely portable and transferable between buildings, without any additional infrastructure required. The machine we have built can clean one side of a large window and overcome small obstacles such as a window divide. In addition, the design of machine is such that it can reach a speed of 10ft2/min and can be fabricated within a budget of $850. We are excited to present the ideal tall building window cleaning machine. We call it Icarus.</p>
 
             </div>
           </div>
@@ -110,14 +109,14 @@
               <div align="right"><a class="btn btn-default page-scroll corner" href="#implementation">Next</a></div>
               
               <a class="thumbnail" href="#">
-                <img class="img-responsive" src="http://i.imgur.com/y15m6cC.png">
+                <img class="img-responsive" src="http://i.imgur.com/Sq5nfWB.png">
               </a>
 
-              <p> Above is a CAD model of our robot, Icarus. It will attach itself to the window using a vacuum-suction cup mechanism. The robot will traverse the window using two perpendicularly oriented arms. These arms will be attached to a wire spool and motor mechanism placed at the center of the robot on a platform giving x and y movement. There is a spring placed between the vacuum cups and railing attachment. The cylinders attached to the vacuum cups allow for the springs to be compressed causing the cups to moved up and down. This is done using the same wire spool and motor mechanism that causes x,y movment. The z-direction movement allows the robot to overcome window partitions. Cleaning will be performed by spongest and squeegees attached to the robot arms allowing the robot to continuously clean as it moves.</p>
+              <p>Above is a CAD model and photograph of the robot, Icarus. It will attach itself to the window using a vacuum-suction cups mechanism. The robot will traverse the window using two perpendicularly oriented arms. These arms will be attached to a wire spool and motor mechanism placed at the centre of the robot on a platform giving x and y movement. The robot will have the ability to lift its feet up in the z-direction. This is done to minimize friction while cleaning and to overcome the divide. A lead screw and motor mechanism will be used to achieve z-direction movement. The robot’s cleaning system will comprise of 3D printing sponge holders and sponges attached to its larger feet. The entire system will be controlled using an Arduino Mega. The code will have various states necessary for locomotion defined. </p>
 
               <b>Requirements:</b>
               <ul>
-                <li type="square">Must clean 2 sections of 1 side of window separated by a divide</li>
+                <li type="square">Must clean 2 sections of 1 side of window separated by a divider</li>
                 <li type="square"> Cannot touch the ground</li>
                 <li type="square"> Cannot exceed 2 ft2 footprint</li>
                 <li type="square"> A power / pneumatic tether is allowed</li>
@@ -135,47 +134,67 @@
                 <li type="square">Speed</li>
                 <li type="square">Clearing divide</li>
                 <li type="square">Consistent performance</li>
-                <li type="square">Carrying all cleaning equipment</li>
                 <li type="square">Drying in prescribed time frame (30 seconds)</li>
               </ul>
 
               <b>Coolness Factors:</b>
               <ul>
-                <li type="square">Detecting the cleanliness of the glass using a light sensor</li>
                 <li type="square">A GUI to provide real time status updates</li>
                 <li type="square">A robust design that always provides at least 4 points of contact</li>
+                <li type="square">The ability to clean with external disturbance (wind, light rain, etc)</li>
               </ul>
 
+
               <h3> Subsystems</h3>
-              <p>There are four major aspects of our robot, split up into movement, sensing, control, and cleaning with each part having further subsystems and functions. The electrical information pathways send either information or electric power throughout the system. The physical information pathways involve characteristics or states of the physical system itself.</p>
+              <p>There are four major aspects of our robot, split up into movement, sensing, control, and cleaning with each part having further subsystems and functions. The electrical pathways send either information or electric power throughout the system. The physical information pathways involve characteristics or states of the physical system itself.</p>
 
               <b> Functional Architecture</b>
               <a class="thumbnail" href="#">
-                <img class="img-responsive" src="http://i.imgur.com/uHxVcwL.png">
+                <img class="img-responsive" src="http://i.imgur.com/Stp4un2.png">
               </a>
               <br/>
 
               <b> Attachment Mechanism</b>
-              <p> Icarus will attach itself to the wall using suction cups and vacuump pumps. The robot will have 8 suction cups total, 4 on the X direction leg and 4 on the Y direction leg. This was chosen to ensure 2 degrees of freedom and that the system is well-balanced. In the event of one foot failing, there will be enough suction cups to continue to hold the weight of the robot.
-              Because the robot would be operating on a vertical window, we chose a safety factor of 3. Failure would likely result in the robot falling, potentially harming someone.
+              <p> Icarus attaches itself to the wall using suction cups and vacuum pumps. The robot will have 8 suction cups total, 4 on the X direction leg and 4 on the Y direction leg. This was chosen to ensure 2 degrees of freedom, that the system is well-balanced and has a build in safety factor of 3. We chose this slightly higher safety factor than the traditional factor of 2 because we would be operating on a vertical surface and failure could would likely result in harming someone or something.  In choosing our attachment mechanism we also considered placing one big electric pump on the floor and using a directional control valve on the X and Y arm as well as micro pumps and a large compressor with ejector nozzles attached to each suction cup. We found the micro electric cup to be the simplest and cheapest of these to implement. Currently our pumps are not mounted on the robot but we hope in future iterations to change this making the system even more portable and easy to use in varying situations. 
               </p>
 
-              <b> Locomotion Mechanism </b>
-              <p> The window cleaner robot has the freedom to move in two perpendicular directions, X and Y. All the mechanism we designed for locomotion have two railings with one moving in X direction and the other moving in Y direction. Each railing is moved using steel wire and a motor. One end of steel wire is wound onto a shaft coupled to the motor and the other end of the wire is attached to the railing. As the motor rotates, the wire pulls the railing either toward or away from it.</p>
-
-              <b>Electric Control</b>
-              <p>The control apparatus consists mainly of the microcontroller as well as the connections to and from all the different hardware that the controller communicates with. Since the robot is largely autonomous and responds to certain sensory stimuli, the controller programming will largely be state-based. The robot will be primarily cycling through a core set of events/actions (manipulating the different legs and platform controls to move in the x-direction), and then it will transition into a special set of actions when reacting to specific events such as reaching a window edge.</p>
-              
-              <b> Cleaning</b>
-              <p> Cleaning is currently set to be performed by attaching a sponge for cleaning and rubber squeegee for drying. The sponge will be presoaked in window cleaning liquid. Cleaning from top to bottom will allow us to take advantage of gravity running the liquid down the window and presoaking areas we are yet to reach making the removal of dirt easier. This will also ensure no spot is made dirty after the robot has passed over it. </p>
-
-              <b> Cyberphysical Architecture</b>
               <a class="thumbnail" href="#">
-                <img class="img-responsive" src="http://i.imgur.com/TTXzYqJ.png">
+                <img class="img-responsive" src="bottom">
               </a>
               <br/>
 
-              <p> The centerpiece of our cyber physical architecture is our microcontroller; it is responsible for 3 major tiers of control: leg control, platform control, and cleaning control. In terms of leg control, the primary aspects are manipulating the Z axis motion of the suction cups. Platform control refers to how the controller manipulates the central platform in the X-Y plane. In order to ascertain the platform’s linear position, the motors are connected to a rotary encoder that reports the motor’s rotational position. The platform control also includes an IMU to help orient the robot in case the pathing starts to veer. In the event of veering the IMU will adjust the pathing to ensure 100% coverage of the window. Cleaning control consists of keeping track of how much fluid the robot has left, information the controller will use to determine if an alert should be raised. This would form part of the user interface and can be something as simple as an LED that lights when fluid-levels are low or as complex as a digital display showing volume or percentages. The edge sensor alerts the robot as to when it has reached the edge of the window, so that it may lower itself down one level or turn in the opposite direction.</p>
+              <b> Vacuum Cup Vertical Motion (Z-Motion)</b>
+              <p> There were two critical reasons for Z-motion. The first was to reduce friction during regular locomotion across the window and the second was to allow the robot to cross the window divider. The mechanisms we considered for this function included a four bar link mechanism, a pneumatic actuator, a solenoid, a rack and pinion, and a lead screw. The pneumatic actuator provided little lifting force for the high amount of power it required and did not have the lift range we desired. The rack and pinion would experience slippage when lifting the cups and could not provide any force to push the sponges against the glass when the cups needed to be reattached. The lead screw and motor provided enough force to reattach the vacuums, had the desirable movement range, provided good output for given power input and provided high control and consistent performance for our z-motion. </p>
+
+              <a class="thumbnail" href="#">
+                <img class="img-responsive" src="http://i.imgur.com/0HZgzBT.png">
+              </a>
+              <br/>
+
+              <b> Locomotion Mechanism </b>
+              <p> The window cleaner robot has the freedom to move in two perpendicular directions, X and Y. The mechanism we designed for locomotion has two railings with one moving in X direction and the other moving in Y direction. Each railing is moved using fishing line and a motor. One end of line is wound onto a shaft coupled to the motor and the other end of the line is attached to the railing. As the motor rotates, the line pulls the railing either toward or away from it. We decided to use fishing line for this mechanism after having considered it and steel wire. We found fishing to be easier to tie and had a far smaller bend radius than the steel wire. Other rotary to linear motion mechanisms considered for this subsystem were rack and pinion, lead screw and motor and pneumatic actuators. We chose spool and wire because of its light weight, ease of implementations, low power demand and speed potential. </p>
+
+              <b>Automatic Control</b>
+              <p>The control apparatus consists mainly of the microcontroller as well as the connections to and from all the different hardware that the controller communicates with. Since the robot is largely autonomous and responds to certain sensory stimuli, the controller programming will largely be state-based. The robot will be primarily cycling through a core set of events/actions (manipulating the different legs and platform controls to move in the x-direction), and then it will transition into a special set of actions when reacting to specific events such as reaching a window edge.</p>
+              <p>Our code is made up of several necessary states that the robot had to be in for locomotion. These states included lowering y-cups, lowering x-cups, centering the robot, waiting for appropriate vacuum pressure, lifting the x-cups and lifting the y-cups. To automate movement we create managers. A manager is a list of several states that occur in sequence to make the robot move one full step. A single manager would run in a loop continuously until something in the landscape of the window changed. In particular, if the robot detected a barrier it would determine if it had reached the edge of the window or it had encountered the divider. Depending on which it had encountered it would change to the appropriate manager. For example, after moving right continuously and detecting the right edge of the window it would respond by switching to the translate down manager for some predetermined distance.</p>
+
+              <a class="thumbnail" href="#">
+                <img class="img-responsive" src="http://i.imgur.com/Zhqm4iX.png">
+              </a>
+              <br/>
+              
+              <b> Cleaning</b>
+              <p> Cleaning is currently set to be performed by a row of sponges attached to the X-railing (the larger of our two railings). The sponge will be presoaked in our special formula of window cleaning liquid (4 part vinegar, 8 part water, 1 part ammonia). We considered having a squeegee incorporated in our cleaning system but due to the high force that needed to be applied for it to clean or wipe the window we decided against it. We also considered having a water reservoir and a pump in our cleaning system. Due to the light level of dirt that is expected on windows we found that a pre-soaked sponge was more than adequate. The robot will clean from top to bottom, allowing us to take advantage of gravity running any excess liquid down the window and pre-soaking areas we are yet to reach making the removal of dirt easier. This will also ensure no spot is made dirty after the robot has passed over it. </p>
+
+              <b> Cyberphysical Architecture</b>
+              <a class="thumbnail" href="#">
+                <img class="img-responsive" src="http://i.imgur.com/it02oP1.png">
+              </a>
+              <br/>
+
+              <p>The centerpiece of our cyber physical architecture is the microcontroller; it is responsible for the two major tiers of control: leg control and platform control. In terms of leg control, the primary responsibilities of this subsystem are to manipulate the Z-axis motion of the legs that house suction cups and sponges as well as properly activate and deactivate the vacuum pumps as needed. Platform control refers to how the controller manipulates the central platform in the X-Y plane. In order to ascertain the platform’s linear position in relation to its 4 legs, we use a combination of limit switches and ultrasonic sensors. </p>
+              <p>The limit switches automatically stop any XY motion when an extreme was reached, while the ultrasonic sensors record distances from the central platform to the end of each railing. The ultrasonic sensory information is indispensable in terms of adjusting the legs to prevent the vacuum cups from overlapping when the two axes moved to extreme points. We do not need to make use of an IMU to help orient the robot in case the path starts to veer as our chosen robot design is not prone to this problem. </p>
+              <p>Our robot has a second set of ultrasonic sensors designed to achieve two different tasks. When moving the legs up and down, they are used for closed-loop control of the leg heights. When moving in the XY plane, they measure for a sudden change in distance to the surface of the window, which would indicate that the robot is approaching a window edge. From there, the robot would extend a little bit past the edge in order to determine whether there is more window on the other side (a barrier that needed to be crossed) or open space (a window edge that the robot must turn away from). A depiction of the cyber physical architecture can be seen above.</p>
             </div>
           </div>
         </div>
@@ -190,13 +209,18 @@
               <div align="right"><a class="btn btn-default page-scroll corner" href="#performance">Next</a></div>
 
               <a class="thumbnail" href="#">
-                <img class="img-responsive" src="http://i.imgur.com/iai652u.png">
+                <img class="img-responsive" src="http://i.imgur.com/cNS7enT.jpg">
+              </a>
+              <br/>
+
+              <a class="thumbnail" href="#">
+                <img class="img-responsive" src="http://i.imgur.com/DhR7tXg.jpg">
               </a>
               <br/>
 
               <h4> Attachment and Z-direction System Progress  </h4>
               <a class="thumbnail" href="#">
-                <img class="img-responsive" src="http://i.imgur.com/wohnnJb.png">
+                <img class="img-responsive" src="http://i.imgur.com/CvrHvoX.png">
               </a>
               <br/>
 
@@ -204,7 +228,7 @@
               <p> We thought to use a solenoid actuator for the z-direction. From our first design review we were informed that this would most likely be a poor choice of movement due to efficiency of the work one can do with the power put in. We had already ordered the part thus felt it necessary to test before ruling this out as a possibility. We found that not only was the solenoid complicated to wire and drive but that it was able to resist very little force when pulled on and had 1.3cm of movment, far less than we were hoping for. Thus it was ruled out as an option for z-direction movement.</p>
             
               <b> Z-Direction Prototype</b>
-              <p> Below is a picture of the first prototype of this subsystem. While we were unable to realize our planned prototype due to ordering problems out of our control we were able to gain insights into problems in our design. Firstly the major fail point for this robot could be the wire. While we were already intending to have a pulley system to avoid the wire having to bend beyond its bend radius this is definitely a critical componenet that could prove unreliable. Secondly we realised how important placement of the motor is for how well this system performs. Tension is also necessary for wire alignment on spool. This lead us to the realization that having this motor and wire spool sitting on the central plate would create problems with the z-motion as the plate and z-direction motor would be moving making co-ordinating a continuous lift particulalry difficult.</p>
+              <p> Below is a picture of the first prototype of this subsystem. While we were unable to realize our planned prototype due to ordering problems out of our control we were able to gain insights into problems in our design. Firstly, the major fail point for this robot could be the wire. While we were already intending to have a pulley system to avoid the wire having to bend beyond its bend radius this is definitely a critical component that could prove unreliable. Secondly, we realized how important placement of the motor is for how well this system performs. Tension is also necessary for wire alignment on spool. This lead us to the realization that having this motor and wire spool sitting on the central plate would create problems with the z-motion as the plate and z-direction motor would be moving making co-ordinating a continuous lift particulalry difficult.</p>
 
               <a class="thumbnail" href="#">
                 <img class="img-responsive" src="http://i.imgur.com/QeLzSFP.png">
@@ -219,11 +243,57 @@
               </a>
               <br/>
             
-              <b> Vacuum Cup</b>
-              <p> In order to choose the vacuum cup diameter we performed a theoretical suction force calculation and solved for cup diameter. We at first did this for a presumed robot weight of 20kg which we knew would be closer to a maximum weight estimation. We ended up choosing a 3in. suction cup to accommodate this weight and tested it with a vacuum pump that provided the appropriate suction rate (12-15LPM) and final pressure (0"Hg). We found this suction cup to have the ability to hold up to 10kg of shear force with a continuous vacuum being pulled and 5kg for 51 seconds if the vacuum pump was run to create a pressure low enough for holding and then turned off. In a similar time frame we revised our working weight to 6-8kg (after having weighed the motor, pump and frame materials we would use) which called for us to recalculate the suction cup diameter size. After these calculations were performed a 1.5in. suction cup was thought to be more appropriate not only by theoretical weight but due to concerns about the liters per minute of air the pump cold extract vs the size of the cup. This suction cup was then tested upon arrival with the difference in test being to apply the force some distance away from the window surface, closer replicating its role in the final robot. This was found to brless 2.4kg, less than the weight it would need to hold given the 6-8kg estimation. This lead us to revert to the first chosen suction cup of 3in. More cups have been ordered and testing on how the vacuum pump performs with 4 3in. diameter cups will be performed when the new cups arrive.</p>
+              <b> Attachment</b>
+              <p> In order to choose the vacuum cup diameter we performed a theoretical suction force calculation and solved for cup diameter. We at first did this for a presumed robot weight of 10kg which we knew would be closer to a maximum weight estimation and a safety factor of 3. We ended up choosing a 3in. suction cup to accommodate this weight and tested it with a vacuum pump that provided the appropriate suction rate (12-15LPM) and final pressure (0"Hg). We found this suction cup to have the ability to hold up to 10kg of shear force with a continuous vacuum being pulled and 5kg for 51 seconds if the vacuum pump was run to create a pressure low enough for holding and then turned off. In a similar time frame we revised our working weight to 6-8kg (after having weighed the motor, pump and frame materials we would use) which called for us to recalculate the suction cup diameter size. After these calculations were performed a 1.5in. suction cup was thought to be more appropriate not only by theoretical weight but due to concerns about the liters per minute of air the pump cold extract vs the size of the cup. This suction cup was then tested upon arrival with the difference in test being to apply the force some distance away from the window surface, closer replicating its role in the final robot. The holding weight was 2.4kg, far under our 6kg expectation, causing us to revert to the first chosen suction cup of 3in. We found that the vacuum pumps were able to handle this larger diameter cup. </p>
 
               <a class="thumbnail" href="#">
                 <img class="img-responsive" src="http://i.imgur.com/4VIp60G.jpg">
+              </a>
+              <br/>
+
+              <p> We had originally hoped to have the vacuum pumps on the robot’s center plate but due to weight concerns we placed the pumps on the ground and had the Arduino control the pumps using a switch. We made use of pressure sensors in this system to ensure we had a reliable seal during operation. Originally we had intended to make use of solenoid valves as we found a significant suction force would remain even after the pumps were turned off. However due to the low duty cycle of the chosen valves we were forced to remove them from the system. </p>
+
+              <a class="thumbnail" href="#">
+                <img class="img-responsive" src="Switch">
+              </a>
+              <br/>
+
+              <b> XY Locomotion</b>
+              <p> We used fishing line that was rated to withstand 100lbs as our cable material after having experimented with 2 wire materials. Wire was found to lack flexibility and restrict us in terms of bend radius it could achieve. The fishing line provided us with the flexibility we desired for tying and spool wrapping purposes. It was also resilient when it came to being wrapped over sharp angles and being pulled in high torque situations. </p>
+
+              <a class="thumbnail" href="#">
+                <img class="img-responsive" src="http://i.imgur.com/GcvayCw.jpg">
+              </a>
+              <br/>
+
+              <b> Cleaning System</b>
+              <p> To test the cleaning subsystem we performed two experiments. The first we performed by altering the sponge used to clean the dirt and in the second we altered the solution used to clean the dirt. We found that the sponge with the most visible porosity was best for cleaning dried dirt and the sponge with the lowest porosity was best for cleaning marker. This was tested based on visual results as well as pressure required to achieve sufficient clean using a Particle Photon and force senor. After testing 11 cleaning solutions we found that ammonia, vinegar and water were the best cleaning agents. Results of the cleaning solution experiment can be seen in below . We created 3D printed holders for the sponges and mounted them on the larger X-railings. We then bolted the sponges onto the holders and bolted the holders onto the railing thus the set up was extremely secure. The sponges were lowered to an appropriate amount below the vacuum cups (0.75in) to ensure that they would clean in the slightly raised leg position maintained during regular locomotion. </p>
+
+              <a class="thumbnail" href="#">
+                <img class="img-responsive" src="http://i.imgur.com/DJcDFRB.jpg">
+              </a>
+              <br/>
+
+              <a class="thumbnail" href="#">
+                <img class="img-responsive" src="http://i.imgur.com/1IJ7tpj.jpg">
+              </a>
+              <br/>
+
+              <b> Electronics and Control</b>
+              <p> The ultrasonic sensors were the most important sensors in our system. They would allow control over the vacuum cup height and for the robot to know if it needed to modulate its behavior due to a significant landscape change on the window (i.e. if it encountered an edge or a divide). The pressure sensors indicate when there was a low enough pressure-- indicating secure robot attachment and when there was a high enough pressure for detachment to occur. Our system originally made use of rotary encoders but they did not always perform as expected. Their usefulness was hindered significantly by the continuously increasing length of the fishing line during the robot’s normal operation. In addition, the various libraries that we attempted to use to interpret the encoders affected the digital control of our vacuum pumps for some unfound reason. As a result, we decided to remove them from the system. The X and Y railing limit switches allowed us to quickly determine if an arm had gone far enough in either direction and needed to stop. </p>
+
+              <b> Coolness Factors</b>
+              <p> We implemented 3 coolness factors in our robot. The first was implementing GUI interface (shown in picture above) to display the status of the robot in real time. This included the position of the X and Y railings, the vertical position of the cups and the pressure sensor readings. In the future we could easily add a Wi-Fi board and remotely view the status of the robot and do basic troubleshooting. A picture of the GUI can be seen in Figure 16. Secondly, each railing used four vacuum cups and a vacuum pump to attach itself to the window. This set up provided extremely good adhesion to the glass. When light external force was applied to the robot the adhesion did not slip, so we fully achieved this coolness factor. </p>
+              
+              <a class="thumbnail" href="#">
+                <img class="img-responsive" src="http://i.imgur.com/LS39P1y.png">
+              </a>
+              <br/>
+
+              <p> Lastly, we required using the minimal amount of cleaning solution to clean the window. Originally we thought we would need a pump and cleaning solution reservoir to get the window sufficiently clean as dried dirt was intended to be used in the test case. However, when this was changed to water soluble marker we set out to verify if a pump would still be necessary. We did this by spraying the bottom of our cleaning mechanism and gently dragging it over the window as we expected the robot to do. We found that we could sufficiently clean the entire window without rinsing or rewetting the sponge.</p>
+
+              <a class="thumbnail" href="#">
+                <img class="img-responsive" src="http://i.imgur.com/WhSSXWr.jpg">
               </a>
               <br/>
 
@@ -239,7 +309,33 @@
             <div class="col-lg-12">
               <h2>System Performance</h2>
               <div align="right"><a class="btn btn-default page-scroll corner" href="#management">Next</a></div>
-              <p>Currently we are still in the prototyping phase and have not been able to assess system level performance.</p>
+              
+              <b> Adhesion</b>
+              <p> The parts used in the adhesion sub-system performed extremely well. When the cups were engaged the robot’s weight was comfortably held against the window. Each cup was capable of holding 10kg when continuous vacuum was pulled. The biggest problem with this mechanism was not having a solenoid valve in the system to relieve pressure. This meant that there was always some vacuum remaining when we attempted to lift the cups. The x-vacuum cups were further apart and thus did not get too affected by this but the y-vacuum cups did as they were closer together. The vacuum created a force that the lead screw motor had to overcome before continuing with the locomotion sequence. At the moment that the y-cups would detach from the window the robot would jerk and this jerk was at times strong enough to detach the x-cups from the window. This was a problem that we simply had no solution to at the late stage that we began to face it and it compromised our system’s ability to perform consistently. The system we chose provides static adhesion which affected our ability to meet the speed requirements. </p>
+
+              <b> Vacuum Cup Lifting Mechanism </b>
+              <p> The z-motion subsystem was well thought out due to how many mechanisms we prototyped before deciding on our final mechanism. Whilst we settled on the best mechanism for this task it too presented some problems. The main problem was that the lead screw mechanism was not able to consistently press the cups flush against the glass, which prevented a complete vacuum seal. The first reason for this was that our ultrasonic sensors had trouble precisely locating the surface of the glass. Calibration was very difficult and we eventually added limit switches to help locate the glass. </p>
+              <p> The second reason was due to tilt. The robot is largely incapable of holding itself level against the glass-- most likely due to the bending moment caused by the force of gravity. This caused the weight to be unevenly distributed and when the lead screws began to push the cups onto the window, the robot would begin to tilt away from the window as one set of Y cups reached the glass before the other. This would make it more difficult for the top Y cups to reach the glass.</p>
+              <p> We performed calculations to determine which motor we should purchase for this mechanism. The weight of the vacuum cups, acrylic plate, sponges and sponge holder was determined to be 500g. We included a safety factor of 2 and found the DC motor that had our desired torque. The motors had a 300 RPM rating which meant that they would theoretically lift and lower the cups 2mm during regular locomotion in 0.05seconds and 0.5 seconds in the case of barrier crossing. But for safety reasons, we ran the motors at a far lower speed than this. This system was highly reliant on ultrasonic sensors and the responses fed to it through the code. Because there was tilt they were asked to perform beyond their capabilities (extend the cups longer than their total length or lift more than 500g to counteract the robot’s tilt) on occasion which compromised their performance.</p>
+
+              <b> Locomotion (XY Motion) </b>
+              <p> The light weight and efficient translation of rotary movement to linear movement of the XY locomotion sub system helped us meet our speed requirement. We calculated that 47RPM was sufficient to achieve a cleaning speed of 10ft2 per minute. We also saw during testing that it had sufficient torque to lift the robot as needed during locomotion. As with the z-motion DC motors these motors were also run at a lower RPM rating. The safety factor of 2 helped us meet our safety and reliability requirement. </p>
+
+              <b> Cleaning Mechanism</b>
+              <p> Having a large amount of sponges in our cleaning sub system makes it possible for our robot to achieve 100% clean of the window. The powerful cleaning solution helped us meet our cleaning inspection requirement (window appeared clean from 3ft) with no streaking. It also allowed us to clean with minimal cleaning solution which meant we did not have residual wetness after 30 seconds. Our system design clearly met the specification for carrying all cleaning materials including sponges and cleaning solution. The sponges were carefully cut and placed at a consistent level below the cups. This was done to ensure they would not affect adhesion and compromise safety. Overall this system performed very well. </p>
+
+              <b> Control System</b>
+              <p> We tested this system continuously over the latter part of the semester. Our initial tests comprised of manual control of the robot by inputting which state we wished for it to be in. After it fulfilled that state to satisfaction we would then input the next appropriate state. Once we had an acceptable level of consistency in the states we ran the robot using its managers. We were unable to test to the point of full automation. </p>
+
+              <p> The core of the robot’s software was in the programming of our Arduino Mega in C/C++. While the final version of our code was rather organized and streamlined, we made several flaws during initial phases of development that made handling errors difficult as the project progressed and grew in complexity. We were unable to meet full automation of the robot due to issues with our physical robot. We also largely ran out of time to address these. </p>
+
+              <b> Overall Performance</b>
+              <p> We believe that the core design of our robot is fundamentally robust, having an extremely strong attachment mechanism, strong DC motors to move the X and Y railings and precise lead screw mechanisms to drive the Z-motion. However, the current state of progress does not meet the full list of specifications, leaving considerable room for future development. Due to time constraints and flaws in our mechanical system we were not able to reach our desired performance speed (even though our system can theoretically achieve them) or reliability. We were unable to achieve full automation for the same reasons. There are very minimal changes that we know would make a huge difference to our robot's performance and would hope to implement them in version 2 of this robot. </p>
+
+              <a class="thumbnail" href="#">
+                <img class="img-responsive" src="http://i.imgur.com/lLbyibJ.png">
+              </a>
+              <br/>
 
             </div>
           </div>
@@ -266,6 +362,10 @@
 
               <br/>
               <p><h3><a href="parts.html">Parts List</a></h3></p>
+              <br/>
+
+              <br/>
+              <p><h3><a href="budget.html">Budget</a></h3></p>
               <br/>
 
               <p><h3><a href="issues.html">Issues Log</a></h3></p>
